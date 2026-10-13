@@ -190,7 +190,9 @@ type MetadataFile struct {
 	CollectionType string `json:"type"`
 	Parent         string `json:"parent"`
 	//LastModified in milliseconds
-	LastModified     string `json:"lastModified"`
+	LastModified string `json:"lastModified"`
+	//CreatedTime in milliseconds; the device sorts "by date created" on it
+	CreatedTime      string `json:"createdTime,omitempty"`
 	LastOpened       string `json:"lastOpened"`
 	LastOpenedPage   int    `json:"lastOpenedPage"`
 	Version          int    `json:"version"`

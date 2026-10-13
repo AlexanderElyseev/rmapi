@@ -250,13 +250,15 @@ func UnixTimestamp() string {
 func CreateMetadata(id, name, parent, colType, fpath string, currentPage *int) (fileName string, filePath string, err error) {
 	fileName = id + "." + string(MetadataExt)
 	filePath = path.Join(fpath, fileName)
+	now := UnixTimestamp()
 	meta := MetadataFile{
 		DocName:        name,
 		Version:        0,
 		CollectionType: colType,
 		Parent:         parent,
 		Synced:         true,
-		LastModified:   UnixTimestamp(),
+		LastModified:   now,
+		CreatedTime:    now,
 	}
 	if currentPage != nil {
 		meta.LastOpenedPage = *currentPage

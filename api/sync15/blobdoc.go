@@ -26,11 +26,13 @@ type BlobDoc struct {
 }
 
 func NewBlobDoc(name, documentId, colType, parentId string) *BlobDoc {
+	now := archive.UnixTimestamp()
 	return &BlobDoc{
 		Metadata: archive.MetadataFile{
 			DocName:        name,
 			CollectionType: colType,
-			LastModified:   archive.UnixTimestamp(),
+			LastModified:   now,
+			CreatedTime:    now,
 			Parent:         parentId,
 		},
 		Entry: Entry{
